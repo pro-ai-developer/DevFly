@@ -6,6 +6,7 @@ export type BlogPost = {
   date: string
   readTime: string
   number: string
+  image: { src: string; alt: string; caption: string; width: number; height: number }
   intro: string
   sections: { heading: string; paragraphs: string[]; bullets?: string[] }[]
   sources?: { label: string; href: string }[]
@@ -14,6 +15,7 @@ export type BlogPost = {
 export const posts: BlogPost[] = [
   {
     slug: 'can-a-nontechnical-person-become-a-partner',
+    image: { src: '/insights/nontechnical-partner.jpg', alt: 'An indigo arch joins emerald steps to form a bridge, with a glass conversation bubble above.', caption: 'Different strengths, one delivery partnership: you bring client relationships, we bring technical execution.', width: 1536, height: 1024 },
     title: 'Can a nontechnical person become a partner? Absolutely.',
     excerpt: 'You do not need development skills to join the partnership. You focus on professional client relationships while our delivery team handles the technical work.',
     category: 'Partnership', date: 'September 16, 2026', readTime: '5 min read', number: '01',
@@ -72,6 +74,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: 'earn-revenue-from-an-underused-freelance-account',
+    image: { src: '/insights/freelance-growth.jpg', alt: 'A laptop beside a series of stone steps with gradually growing green plants.', caption: 'A professional channel grows through consistent research, thoughtful proposals, and reliable delivery.', width: 1536, height: 1024 },
     title: 'Can an underused freelance account become a real revenue channel?',
     excerpt: 'A strong profile may be sitting idle. With the right delivery partner, it can become an active—and carefully managed—business channel.',
     category: 'Growth', date: 'September 12, 2026', readTime: '6 min read', number: '02',
@@ -79,12 +82,13 @@ export const posts: BlogPost[] = [
     sections: [
       { heading: 'Why good accounts go quiet', paragraphs: ['Freelance channels are often underused because one person cannot do everything at once. Finding the right jobs takes time. Proposals require research. Client calls need preparation. Then the actual work still has to be scoped, built, tested, and supported.', 'A delivery partnership closes that operating gap. The account owner remains the genuine client-facing professional, while an experienced product and engineering team supplies the research, proposal support, technical expertise, and execution.'] },
       { heading: 'What the partner contributes', paragraphs: ['The model only works when the account owner stays involved. The partner maintains ownership and oversight, reviews important activity, joins calls when required, manages the payment side, and communicates truthfully about who will perform the work.'], bullets: ['An accurate, established professional profile', 'Reliable availability for reviews and client calls', 'A dedicated, secure work environment', 'Professional communication and sound judgment', 'Commitment to the platform’s current rules'] },
-      { heading: 'What the ProDev team contributes', paragraphs: ['The technical and operations team turns opportunity into delivery. That includes researching suitable jobs, preparing tailored proposals, covering agreed application costs, briefing the partner before calls, and managing the full product lifecycle from development through deployment.', 'This is not passive income and it is not an account-rental arrangement. It is a documented operating partnership in which both sides have real responsibilities and the client receives an accurate picture of the delivery team.'] },
+      { heading: 'What the Codvoro team contributes', paragraphs: ['The technical and operations team turns opportunity into delivery. That includes researching suitable jobs, preparing tailored proposals, covering agreed application costs, briefing the partner before calls, and managing the full product lifecycle from development through deployment.', 'This is not passive income and it is not an account-rental arrangement. It is a documented operating partnership in which both sides have real responsibilities and the client receives an accurate picture of the delivery team.'] },
       { heading: 'A sustainable revenue loop', paragraphs: ['The goal is to improve the entire chain: better-fit opportunities lead to stronger proposals; stronger proposals lead to good projects; good delivery creates positive client relationships and repeat work.', 'Growth should be gradual. Start with a clear agreement, one well-matched project, visible records, and a review of what worked before increasing volume.'] },
     ],
   },
   {
     slug: 'will-freelance-partnership-income-cause-a-tax-problem',
+    image: { src: '/insights/financial-records.jpg', alt: 'Organized document folders, a glass paper tray, and an indigo calculator on a desk.', caption: 'Keep agreements, invoices, platform statements, and payment confirmations together for a clear financial record.', width: 1536, height: 1024 },
     title: 'Will partnership income create a tax problem? Here’s how to prepare.',
     excerpt: 'Receiving gross platform payments can create confusing tax documents. Clean agreements, invoices, payment records, and professional advice reduce surprises.',
     category: 'Finance', date: 'September 9, 2026', readTime: '7 min read', number: '03',
@@ -103,6 +107,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: 'building-a-transparent-freelance-partnership',
+    image: { src: '/insights/transparent-partnership.jpg', alt: 'Two interlocking blue and green forms and orderly documents inside a transparent glass structure.', caption: 'Clear ownership, shared visibility, and documented decisions hold a working partnership together.', width: 1536, height: 1024 },
     title: 'What a transparent freelance partnership actually looks like',
     excerpt: 'Clear ownership, visible project activity, and documented payments turn a loose arrangement into a durable working relationship.',
     category: 'Partnership', date: 'September 4, 2026', readTime: '5 min read', number: '04',
@@ -115,6 +120,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: 'how-the-30-70-revenue-model-works',
+    image: { src: '/insights/revenue-sharing.jpg', alt: 'Ten equal blocks form one bar: three green blocks for the partner and seven blue blocks for the team.', caption: 'One agreed revenue base: 30% for the partner and 70% for the technical and operations team.', width: 1536, height: 1024 },
     title: 'How the 30/70 revenue model works',
     excerpt: 'A practical look at the responsibilities, documentation, and project math behind the partnership structure.',
     category: 'Operations', date: 'August 27, 2026', readTime: '4 min read', number: '05',
@@ -127,6 +133,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: 'preparing-for-client-calls-as-a-partner',
+    image: { src: '/insights/client-call-preparation.jpg', alt: 'A laptop, microphone, notebook, and green conversation bubble arranged for a prepared client call.', caption: 'A useful project brief and available technical support help you enter client conversations prepared.', width: 1536, height: 1024 },
     title: 'Preparing for client calls as a delivery partner',
     excerpt: 'A calm, repeatable preparation process helps partners represent the work clearly—even when the project is technically complex.',
     category: 'Client Success', date: 'August 18, 2026', readTime: '4 min read', number: '06',

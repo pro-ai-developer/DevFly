@@ -120,7 +120,7 @@ export const projects: PortfolioProject[] = [
     slug: 'healthcare-scheduling-system',
     title: 'Healthcare Scheduling System',
     category: 'Web Application',
-    desc: 'HIPAA-compliant appointment scheduling for a US medical group with 50+ providers. Includes patient portal, automated reminders, EHR integration, and billing.',
+    desc: 'Appointment scheduling for a medical group. Includes patient portal, automated reminders, EHR integration, and billing.',
     challenge: 'Legacy scheduling software was causing 200+ missed appointments per month and significant staff overhead.',
     outcome: 'Reduced missed appointments by 60% and cut scheduling admin time in half.',
     tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Twilio', 'AWS'],

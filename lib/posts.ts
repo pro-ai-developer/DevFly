@@ -12,7 +12,7 @@ export type BlogPost = {
   sources?: { label: string; href: string }[]
 }
 
-export const posts: BlogPost[] = [
+const partnerPosts: BlogPost[] = [
   {
     slug: 'can-a-nontechnical-person-become-a-partner',
     image: { src: '/insights/nontechnical-partner.jpg', alt: 'An indigo arch joins emerald steps to form a bridge, with a glass conversation bubble above.', caption: 'Different strengths, one delivery partnership: you bring client relationships, we bring technical execution.', width: 1536, height: 1024 },
@@ -145,5 +145,53 @@ export const posts: BlogPost[] = [
     ],
   },
 ]
+
+
+export const developmentPosts: BlogPost[] = [
+  {
+    slug: 'a-clear-brief-for-your-next-web-project',
+    title: 'A better website starts with a clearer brief.',
+    excerpt: 'The questions worth answering before design begins: who the site serves, what it needs to communicate, and what visitors should do next.',
+    category: 'Project Planning', date: 'October 6, 2026', readTime: '3 min read', number: '07',
+    image: { ...partnerPosts[5].image, caption: 'A useful project brief gives every conversation a shared starting point.' },
+    intro: 'A website brief does not need to specify every page or technology. Its first job is to make the business problem clear enough that design and development can move in the same direction.',
+    sections: [
+      { heading: 'Start with the business need', paragraphs: ['Describe why the project matters now. Perhaps your services have changed, visitors struggle to find the right information, or your team cannot update the current site easily. Concrete problems are more useful than a general request for a modern design.', 'Write down what you want the new site to make possible. That gives the project a purpose that can guide decisions when several directions look equally attractive.'] },
+      { heading: 'Know the people you are designing for', paragraphs: ['Identify the main audiences and the questions they bring. A prospective customer comparing suppliers needs different information from an existing customer looking for support. Decide which journeys matter most.'], bullets: ['Who is the primary visitor?', 'What do they need to understand or evaluate?', 'What should their next step be?', 'What might prevent them from taking that step?'] },
+      { heading: 'Bring the content into the conversation early', paragraphs: ['Collect your service descriptions, product information, brand materials, and relevant work examples. Mark what is ready, what needs revision, and who can approve it.', 'Content shapes navigation and page design. Knowing what you need to communicate helps the team choose an appropriate layout and avoid filling the site with sections that have no clear job.'] },
+      { heading: 'Make the practical constraints visible', paragraphs: ['List the systems the site must connect to, the people who will maintain it, and any important dates. Separate essential launch requirements from improvements that could follow later.', 'A short brief with clear priorities is a strong starting point. The discovery stage can turn it into an agreed scope, design direction, and delivery plan.'] },
+    ],
+  },
+  {
+    slug: 'planning-a-focused-first-product-release',
+    title: 'What belongs in your first product release?',
+    excerpt: 'A practical way to separate the core user journey from the features that can wait, and give the first release a clear purpose.',
+    category: 'Product Development', date: 'October 6, 2026', readTime: '3 min read', number: '08',
+    image: { ...partnerPosts[1].image, caption: 'A focused release gives your team a clear direction and room to learn.' },
+    intro: 'A first release is a set of deliberate choices. It should let a real user complete a useful task, while giving your team a manageable scope to build, review, and support.',
+    sections: [
+      { heading: 'Define the complete journey', paragraphs: ['Describe one important task from the user?s point of view. Start with how they arrive and finish with the result they need. For a booking product, that might mean finding availability, choosing a time, and receiving confirmation.', 'This journey helps distinguish features that make the product usable from features that add flexibility. A smaller, complete experience is easier to evaluate than a large collection of unfinished screens.'] },
+      { heading: 'Agree on what is essential', paragraphs: ['Review each proposed feature against the purpose of the release. Ask what would happen if it were absent and whether a simpler approach could support the same task.'], bullets: ['Needed to complete the main task', 'Needed to operate and support the product', 'Useful after the core experience has been reviewed', 'An open question that needs more discovery'] },
+      { heading: 'Include the operational work', paragraphs: ['The first release needs more than visible features. Agree on who handles user questions, how the team investigates problems, and what information needs to be recorded.', 'Plan access permissions, administration, and a workable handover alongside the customer experience. These details affect how confidently your team can use the product after launch.'] },
+      { heading: 'Decide what you want to learn', paragraphs: ['Before release, write down the questions that real usage should help answer. Can people finish the main task? Where do they ask for help? Which requests repeat?', 'Use those observations to plan the next increment. A clear first release creates a starting point for better decisions about the product that follows.'] },
+    ],
+  },
+  {
+    slug: 'planning-for-life-after-launch',
+    title: 'Plan for the work that comes after launch.',
+    excerpt: 'Documentation, ownership, maintenance, and feedback deserve a place in the project plan from the beginning.',
+    category: 'Software Delivery', date: 'October 6, 2026', readTime: '3 min read', number: '09',
+    image: { ...partnerPosts[0].image, caption: 'A considered handover connects delivery with the people who will operate the product.' },
+    intro: 'Launch is a transition in responsibility. The product moves from a development environment into everyday use, and the people operating it need the context to keep it working and improving.',
+    sections: [
+      { heading: 'Make ownership explicit', paragraphs: ['Agree on who manages hosting, domains, content, integrations, and user support. Record the relevant accounts and contacts so that routine tasks do not depend on finding a single person.', 'Talk through how access will be handed over and who should be involved in future changes. These decisions are easier to make before launch becomes the immediate priority.'] },
+      { heading: 'Document the tasks people actually do', paragraphs: ['Useful documentation answers practical questions: how to update content, how to review an issue, where to find configuration information, and how a release is coordinated.', 'Keep the handover focused on the responsibilities of the receiving team. A guided walkthrough and a concise reference can make the transition much easier to follow.'] },
+      { heading: 'Agree on support expectations', paragraphs: ['Define how issues are reported, who reviews them, and how ongoing maintenance will be arranged. Separate fixing an issue from requesting a new feature so both can be planned clearly.'], bullets: ['A contact and process for reporting issues', 'Ownership of updates and routine maintenance', 'An agreed approach to new feature requests', 'A schedule for reviewing product priorities'] },
+      { heading: 'Give feedback a place to go', paragraphs: ['Collect feedback from the people using the product and review it alongside business priorities. Look for repeated friction before deciding what to change.', 'The next release should have its own scope and purpose. A clear handover makes that ongoing work easier to discuss, estimate, and deliver.'] },
+    ],
+  },
+]
+
+export const posts: BlogPost[] = [...developmentPosts, ...partnerPosts]
 
 export function getPost(slug: string) { return posts.find((post) => post.slug === slug) }

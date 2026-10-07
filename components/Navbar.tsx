@@ -3,121 +3,54 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import { Menu, X, Phone, Mail, ArrowRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/blog', label: 'Insights' },
+  { href: '/portfolio', label: 'Our work' },
   { href: '/process', label: 'Process' },
   { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Insights' },
 ]
 
 export default function Navbar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200">
-      {/* Utility bar — contact details up front, the way a firm's site opens */}
-      <div className="hidden lg:block bg-slate-900 text-slate-300">
-        <div className="container-wide h-10 flex items-center justify-between text-[0.8125rem]">
-          <p className="tracking-wide">
-            Senior software team for US startups — freelancer pricing, agency delivery.
-          </p>
-          <div className="flex items-center gap-7">
-            <a href="tel:+16176159749" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5" />
-              +1 (617) 615-9749
-            </a>
-            <a href="mailto:admin@codvoro.com" className="flex items-center gap-2 hover:text-white transition-colors">
-              <Mail className="w-3.5 h-3.5" />
-              admin@codvoro.com
-            </a>
-          </div>
-        </div>
-      </div>
+  useEffect(() => { setMobileOpen(false) }, [pathname])
+  useEffect(() => {
+    if (!mobileOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false)
+        document.getElementById('navigation-toggle')?.focus()
+      }
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [mobileOpen])
 
-      <nav className="container-wide h-16 lg:h-20 flex items-center justify-between gap-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <Image
-            src="/codvoro-logo.svg"
-            alt="Codvoro"
-            width={180}
-            height={64}
-            priority
-            className="h-10 lg:h-12 w-auto logo-clean"
-          />
-        </Link>
+  const active = (href: string) => pathname === href || pathname.startsWith(href + '/')
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-8 lg:gap-10 ml-auto">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`relative py-2 text-[0.9375rem] font-semibold tracking-tight transition-colors after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:transition-colors ${
-                  pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`))
-                    ? 'text-slate-900 after:bg-brand-600'
-                    : 'text-slate-600 hover:text-slate-900 after:bg-transparent hover:after:bg-slate-300'
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center shrink-0">
-          <Link href="/contact" className="btn-primary text-sm py-2.5 px-5">
-            Book a Free Call <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200">
-          <ul className="container-wide py-3">
-            {navLinks.map((link) => (
-              <li key={link.href} className="border-b border-slate-100 last:border-0">
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`block py-3 text-base font-semibold transition-colors ${
-                  pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? 'text-brand-700' : 'text-slate-700 hover:text-slate-900'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-4 pb-2">
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="btn-primary text-sm w-full justify-center"
-              >
-                Book a Free Call <ArrowRight className="w-4 h-4" />
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
-  )
+  return <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
+    <nav aria-label="Main navigation" className="container-wide h-18 lg:h-20 flex items-center justify-between gap-6">
+      <Link href="/" aria-label="Codvoro home" className="shrink-0">
+        <Image src="/codvoro-logo.svg" alt="Codvoro" width={180} height={64} priority className="h-10 w-auto logo-clean" />
+      </Link>
+      <ul className="hidden lg:flex items-center gap-8">
+        {navLinks.map(link => <li key={link.href}><Link href={link.href} aria-current={active(link.href) ? 'page' : undefined} className={active(link.href) ? 'text-sm font-semibold text-brand-600' : 'text-sm font-medium text-slate-600 transition-colors hover:text-brand-600'}>{link.label}</Link></li>)}
+      </ul>
+      <Link href="/contact" className="btn-primary hidden lg:inline-flex text-sm px-5 py-3">Discuss a project <ArrowUpRight className="h-4 w-4" /></Link>
+      <button id="navigation-toggle" type="button" className="lg:hidden p-2 text-slate-700" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={mobileOpen} aria-controls="mobile-navigation">
+        {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
+    </nav>
+    {mobileOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="lg:hidden border-t border-slate-200 bg-white max-h-[calc(100dvh-4.5rem)] overflow-y-auto">
+      <ul className="container-wide py-5">
+        {[{ href: '/', label: 'Home' }, ...navLinks].map(link => <li key={link.href}><Link href={link.href} onClick={() => setMobileOpen(false)} aria-current={pathname === link.href ? 'page' : undefined} className="block rounded-lg px-3 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600">{link.label}</Link></li>)}
+        <li className="pt-4"><Link href="/contact" onClick={() => setMobileOpen(false)} className="btn-primary w-full">Discuss a project <ArrowUpRight className="h-4 w-4" /></Link></li>
+      </ul>
+    </nav>}
+  </header>
 }

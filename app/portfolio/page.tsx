@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github } from 'lucide-react'
 import VideoHero from '@/components/VideoHero'
 import { projects } from './projects'
 import { siteUrl } from '@/lib/site'
@@ -77,11 +77,11 @@ export default function PortfolioPage() {
 
       {/* Hero */}
       <VideoHero src="/showreel.mp4">
-        <span className="section-tag section-tag-light">Our Work</span>
-        <h1 className="text-[2.5rem] lg:text-6xl font-extrabold text-white leading-[1.05] tracking-[-0.033em] mb-6">
-          Projects that <span className="gradient-text-light">drive real outcomes</span>
+        <span className="hero-eyebrow">Our Work</span>
+        <h1 className="hero-title">
+          Design and development,<br /><span className="text-brand-200">in practice.</span>
         </h1>
-        <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
+        <p className="hero-description">
           We don&apos;t just write code — we solve business problems. Every project has a challenge, a solution, and a measured result.
         </p>
       </VideoHero>
@@ -93,40 +93,40 @@ export default function PortfolioPage() {
             <div>
               <span className="section-tag">Case Studies</span>
               <h2 className="section-title">
-                Selected <span className="gradient-text">client work</span>
+                A closer look at our work.
               </h2>
             </div>
             <div className="section-head-aside">
               <p className="section-subtitle">
-                Each build below started as a business problem. Open a case study to see the
+                Explore the project brief, design decisions, and product details. See the
                 challenge, the approach we took, and what shipped.
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, idx) => (
               <article
                 key={project.title}
-                className={`group flex flex-col anim-reveal anim-delay-${(idx % 6) + 1}`}
+                className={`project-card group flex flex-col anim-reveal anim-delay-${(idx % 6) + 1}`}
               >
                 {/* Visual */}
                 <Link
                   href={`/portfolio/demo/${project.slug}`}
-                  className="aspect-[16/10] rounded-[var(--radius-lg)] overflow-hidden relative block bg-slate-100"
+                  className="aspect-[16/10] overflow-hidden relative block bg-slate-100"
                 >
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 767px) 100vw, 50vw"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-40`} />
+                  <div className="absolute inset-0 bg-slate-950/5" />
                 </Link>
 
                 {/* Content */}
-                <div className="flex flex-col flex-1 border-t border-slate-900 mt-6 pt-6">
+                <div className="flex flex-col flex-1 p-6 sm:p-8">
                   <span className={`text-[0.6875rem] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-[var(--radius-sm)] w-fit mb-4 ${project.category_color}`}>
                     {project.category}
                   </span>
@@ -170,9 +170,9 @@ export default function PortfolioPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
-                        aria-label={`${project.title} source code`}
+                        aria-label={`${project.title} source profile`}
                       >
-                        <Github className="w-4 h-4" /> Code
+                        <Github className="w-4 h-4" /> Profile
                       </a>
                     )}
                   </div>
@@ -183,22 +183,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-slate-950 anim-reveal">
-        <div className="container-wide section-pad-sm grid lg:grid-cols-[1.15fr_auto] gap-8 lg:gap-20 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Ready to build your project?
-            </h2>
-            <p className="mt-4 text-slate-400 text-lg max-w-2xl">
-              Let&apos;s talk about your vision. We&apos;ll help you scope, architect, and ship it.
-            </p>
-          </div>
-          <Link href="/contact" className="btn-primary text-base shrink-0">
-            Contact Us <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
     </>
   )
 }

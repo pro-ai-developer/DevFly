@@ -65,24 +65,24 @@ export default function DemoProjectPage({ params }: DemoProjectPageProps) {
             <ArrowLeft className="w-4 h-4" /> Back to Portfolio
           </Link>
 
-          <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-20 items-center">
+          <div className="grid gap-10 text-center">
             <div>
               <span className={`text-[0.6875rem] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-[var(--radius-sm)] w-fit mb-5 inline-block ${project.category_color}`}>
                 {project.category}
               </span>
-              <h1 className="section-title">{project.title}</h1>
-              <p className="lede mt-6 max-w-2xl">{project.demoSummary}</p>
+              <h1 className="section-title max-w-4xl mx-auto">{project.title}</h1>
+              <p className="lede mt-6 max-w-2xl mx-auto">{project.demoSummary}</p>
 
-              <dl className="grid sm:grid-cols-3 rule-grid mt-10">
+              <dl className="grid sm:grid-cols-3 gap-3 mt-8 max-w-3xl mx-auto">
                 {project.metrics.map((item) => (
-                  <div key={item.label} className="px-6 py-5">
+                  <div key={item.label} className="px-6 py-5 bg-slate-50 rounded-xl">
                     <dt className="text-[0.6875rem] uppercase tracking-[0.14em] font-bold text-slate-500">{item.label}</dt>
                     <dd className="text-2xl font-extrabold text-slate-900 tracking-tight mt-1.5">{item.value}</dd>
                   </div>
                 ))}
               </dl>
 
-              <div className="flex flex-wrap gap-4 mt-10">
+              <div className="flex flex-wrap justify-center gap-4 mt-8">
                 <Link href="/contact" className="btn-primary">
                   Build Something Similar <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -94,15 +94,15 @@ export default function DemoProjectPage({ params }: DemoProjectPageProps) {
               </div>
             </div>
 
-            <div className="relative h-80 lg:h-[26rem] rounded-[var(--radius-lg)] overflow-hidden">
+            <div className="relative aspect-[16/9] w-full max-w-5xl mx-auto rounded-[var(--radius-lg)] overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 1024px"
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-45`} />
+              <div className="absolute inset-0 bg-slate-950/5" />
             </div>
           </div>
         </div>
@@ -177,16 +177,16 @@ export default function DemoProjectPage({ params }: DemoProjectPageProps) {
           <div className="absolute inset-0 bg-hero-grid opacity-[0.06]" />
           <div className="absolute -top-40 -right-40 h-[34rem] w-[34rem] rounded-full bg-brand-600/20 blur-3xl" />
           <div className="relative container-wide py-10 lg:py-12">
-            <div className="mx-auto max-w-6xl grid lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] gap-4 lg:gap-16 items-end mb-7">
+            <div className="section-head">
               <div>
                 <span className="section-tag section-tag-light">Inside the Product</span>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-white tracking-[-0.035em] leading-[1.04] max-w-3xl">
                   Explore the product experience.
                 </h2>
               </div>
-              <div className="lg:border-l lg:border-white/15 lg:pl-10">
+              <div className="max-w-2xl">
                 <p className="text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl">
-                  Move through the workflow builder, execution monitoring, analytics, and integrations.
+                  Browse the screens and details that bring this project together.
                 </p>
               </div>
             </div>

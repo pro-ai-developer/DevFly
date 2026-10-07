@@ -94,27 +94,27 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <VideoHero src="/contact.mp4" minHeightClass="min-h-[55vh]">
-        <span className="section-tag section-tag-light">Get In Touch</span>
-        <h1 className="text-[2.5rem] lg:text-6xl font-extrabold text-white leading-[1.05] tracking-[-0.033em] mb-6">
+      <VideoHero src="/contact.mp4" minHeightClass="min-h-[420px]">
+        <span className="hero-eyebrow">Get In Touch</span>
+        <h1 className="hero-title">
           Let&apos;s build something <span className="gradient-text-light">together</span>
         </h1>
-        <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
-          Tell us about your project. We read every message and respond within 24 hours.
+        <p className="hero-description">
+          Share your goals, the challenge you are working on, and what you have in mind. We will help you work out the next step.
         </p>
       </VideoHero>
 
       {/* Contact options + form */}
-      <section className="section-pad-sm bg-white">
-        <div className="container-wide grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] gap-12 lg:gap-20">
+      <section className="section-pad bg-slate-50">
+        <div className="container-wide grid lg:grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)] gap-10 lg:gap-14 items-start">
           {/* Left — contact info */}
           <div>
             <span className="section-tag">Contact Codvoro</span>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-              Talk to the people who will build it
+              Start with a conversation
             </h2>
             <p className="text-slate-600 leading-relaxed mb-10">
-              Whether you have a detailed spec or just a rough idea, we are happy to talk. No obligation, no sales pressure.
+              Bring a brief, an existing product, or an idea you want to explore. We will discuss the scope, priorities, and how we can help.
             </p>
 
             <dl className="border-t border-slate-200">
@@ -139,7 +139,7 @@ export default function ContactPage() {
                     <a href="mailto:admin@codvoro.com" className="text-lg font-semibold text-slate-900 hover:text-brand-600 transition-colors break-all">
                       admin@codvoro.com
                     </a>
-                    <p className="text-slate-500 text-sm mt-0.5">We reply within 24 hours.</p>
+                    <p className="text-slate-500 text-sm mt-0.5">For project inquiries and general questions.</p>
                   </dd>
                 </div>
               </div>
@@ -147,10 +147,10 @@ export default function ContactPage() {
               <div className="flex items-start gap-4 py-5 border-b border-slate-200">
                 <Calendar className="w-5 h-5 text-accent-600 shrink-0 mt-1" strokeWidth={1.75} />
                 <div>
-                  <dt className="text-[0.6875rem] font-bold text-slate-500 uppercase tracking-[0.14em] mb-1">Book a free call</dt>
+                  <dt className="text-[0.6875rem] font-bold text-slate-500 uppercase tracking-[0.14em] mb-1">Schedule a conversation</dt>
                   <dd>
                     <p className="text-slate-600 text-[0.9375rem] mb-3">
-                      30-minute intro call to discuss your project, timeline, and budget.
+                      An introductory conversation about your project, priorities, and timeline.
                     </p>
                     <a
                       href="https://outlook.office.com/book/DiscussabouttheProjectwithDaniel@codvoro.com/"
@@ -158,7 +158,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="link-arrow text-[0.9375rem]"
                     >
-                      Open Booking Calendar <ArrowRight className="w-4 h-4" />
+                      Choose a meeting time <ArrowRight className="w-4 h-4" />
                     </a>
                   </dd>
                 </div>
@@ -172,9 +172,9 @@ export default function ContactPage() {
             <ol className="border-t border-slate-200">
               {[
                 'You submit this form',
-                'We review and reply within 24h',
+                'We review your goals and requirements',
                 'We schedule a discovery call',
-                'We send a proposal within 48h',
+                'We outline an approach and next steps',
               ].map((step, i) => (
                 <li key={step} className="flex items-start gap-4 py-3.5 border-b border-slate-200 text-slate-700">
                   <span className="text-sm font-bold text-brand-600 tabular-nums shrink-0 pt-0.5">
@@ -196,7 +196,7 @@ export default function ContactPage() {
                 </div>
                 <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Message received</h2>
                 <p className="text-slate-600 max-w-md">
-                  Thanks for reaching out. We will review your message and get back to you within 24 hours.
+                  Thank you for sharing your project. Our team will review your message and contact you at the email address provided.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setError(''); setFormState({ name: '', email: '', company: '', projectType: '', budget: '', details: '', website: '' }) }}
@@ -206,8 +206,8 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <div className="card p-8 lg:p-12">
-                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Submit your project</h2>
+              <div className="card p-6 sm:p-8 lg:p-10">
+                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">Tell us about your project</h2>
                 <p className="text-slate-600 mb-8">Fields marked with an asterisk are required.</p>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Honeypot — hidden from real users, catches bots */}

@@ -14,7 +14,6 @@ const organizationJsonLd = {
     '@type': 'ContactPoint',
     telephone: '+1-617-615-9749',
     contactType: 'sales',
-    areaServed: 'US',
     availableLanguage: 'English',
   },
 }
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     template: '%s | Codvoro',
   },
   description:
-    'Codvoro builds custom web applications, SaaS platforms, and startup MVPs. Freelancer pricing, agency-quality delivery. Based in the US & serving growing businesses worldwide.',
+    'Codvoro designs and develops business websites, custom applications, SaaS platforms, and connected digital products. Thoughtful design and dependable development.',
   keywords: [
     'web development',
     'SaaS development',
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
     'React',
     'Next.js',
     'Node.js',
-    'software agency',
+    'software development company',
   ],
   applicationName: 'Codvoro',
   authors: [{ name: 'Codvoro', url: siteUrl }],
@@ -77,14 +76,14 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: 'Codvoro — Modern Software Development for US Startups',
     description:
-      'Codvoro builds custom web applications, SaaS platforms, and startup MVPs with freelancer pricing and agency-quality delivery.',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Codvoro software development agency' }],
+      'Business websites, custom applications, and SaaS platforms. A development partner from the first brief to launch and beyond.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Codvoro web and software development' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Codvoro — Modern Software Development for US Startups',
     description:
-      'Codvoro builds custom web applications, SaaS platforms, and startup MVPs with freelancer pricing and agency-quality delivery.',
+      'Business websites, custom applications, and SaaS platforms. A development partner from the first brief to launch and beyond.',
     images: ['/opengraph-image'],
   },
 }
@@ -105,8 +104,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-5 focus:py-3 focus:text-brand-700">Skip to content</a>
         <Navbar />
-        <main className="pt-16 lg:pt-30">{children}</main>
+        <main id="main-content" className="pt-18 lg:pt-20">{children}</main>
         <Footer />
       </body>
     </html>

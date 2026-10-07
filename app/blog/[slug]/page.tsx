@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, Check, ExternalLink } from 'lucide-react'
-import { getPost, posts } from '@/lib/posts'
+import { developmentPosts, getPost, posts } from '@/lib/posts'
 import { siteUrl } from '@/lib/site'
 
 export function generateStaticParams() { return posts.map(({ slug }) => ({ slug })) }
@@ -29,6 +29,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 export default function ArticlePage({ params }: { params: { slug: string } }) {
   const post = getPost(params.slug)
   if (!post) notFound()
+  const isPartnerArticle = !developmentPosts.some(item => item.slug === post.slug)
 
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -41,10 +42,10 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     }) }} />
     <article>
       <header className="section-pad-sm bg-slate-950 text-white">
-        <div className="container-mid">
+        <div className="container-mid text-center">
           <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white mb-10"><ArrowLeft className="h-4 w-4" />Back to insights</Link>
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-300">{post.category} · {post.readTime}</p>
-          <h1 className="mt-5 text-[2.5rem] sm:text-6xl font-extrabold leading-[1.06] tracking-[-0.035em] max-w-5xl">{post.title}</h1>
+          <h1 className="mt-5 text-[2.25rem] sm:text-5xl font-semibold leading-[1.16] tracking-[-0.035em] text-balance">{post.title}</h1>
           <p className="mt-7 text-slate-400 text-sm">Published {post.date}</p>
         </div>
       </header>
@@ -71,6 +72,6 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </article>
-    <section className="section-pad-sm bg-slate-100"><div className="container-wide flex flex-col sm:flex-row gap-6 sm:items-center justify-between"><div><p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-600">Next step</p><h2 className="mt-2 text-3xl font-extrabold">See whether the partnership fits.</h2><p className="mt-3 text-slate-600">Read the responsibilities and practical details before you apply.</p></div><Link href="/partner/apply" className="btn-primary shrink-0">Explore the role & apply <ArrowRight className="h-4 w-4" /></Link></div></section>
+    {isPartnerArticle && <section className="section-pad-sm bg-slate-100"><div className="container-wide centered-stack"><div><p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-600">Next step</p><h2 className="mt-2 text-3xl font-extrabold">See whether the partnership fits.</h2><p className="mt-3 text-slate-600">Read the responsibilities and practical details before you apply.</p></div><Link href="/partner/apply" className="btn-primary shrink-0">Explore the role & apply <ArrowRight className="h-4 w-4" /></Link></div></section>}
   </>
 }

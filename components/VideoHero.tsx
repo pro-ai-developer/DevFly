@@ -18,10 +18,7 @@ type VideoHeroProps = {
 /**
  * Full-bleed background video hero.
  *
- * Content is set left in a wide gutter so the page opens like a magazine
- * spread rather than a centred splash screen. The scrim is directional —
- * heaviest on the left where the type sits, so the footage stays visible
- * on the right.
+ * Centered content and an even scrim keep type readable across the footage.
  *
  * `muted` is assigned imperatively because React does not reliably emit the
  * muted attribute during SSR — without it browsers refuse to autoplay.
@@ -31,7 +28,7 @@ type VideoHeroProps = {
 export default function VideoHero({
   src,
   children,
-  minHeightClass = 'min-h-[68vh]',
+  minHeightClass = 'min-h-[460px]',
   contentWidthClass = 'max-w-3xl',
   footerBar,
 }: VideoHeroProps) {
@@ -63,13 +60,12 @@ export default function VideoHero({
         aria-hidden="true"
         tabIndex={-1}
       />
-      {/* Legibility scrim — weighted left, where the headline sits */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/72 to-slate-900/45" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-slate-950/55" />
+      <div className="absolute inset-0 bg-slate-950/75" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/30" />
 
       <div className="relative z-10 flex-1 flex items-center">
-        <div className="container-wide w-full py-20 lg:py-28">
-          <div className={contentWidthClass}>{children}</div>
+        <div className="container-wide w-full py-20 lg:py-24">
+          <div className={`hero-content ${contentWidthClass}`}>{children}</div>
         </div>
       </div>
 

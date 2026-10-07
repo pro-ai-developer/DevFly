@@ -1,166 +1,58 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Users, Zap, Target, Heart } from 'lucide-react'
+import { ArrowRight, Compass, MessageSquare, Code2, HeartHandshake, Check } from 'lucide-react'
 import VideoHero from '@/components/VideoHero'
+import SectionHeading from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'Learn about Codvoro — a small, senior software development team building world-class web apps and SaaS platforms for US startups and businesses.',
-  alternates: {
-    canonical: '/about',
-  },
-  openGraph: {
-    title: 'About Codvoro',
-    description:
-      'Meet the senior software team behind Codvoro and learn how we deliver startup and SaaS products.',
-    url: '/about',
-    type: 'website',
-  },
+  title: 'About Codvoro',
+  description: 'Codvoro is a web and software development company bringing together product thinking, considered design, and dependable engineering.',
+  alternates: { canonical: '/about' },
+  openGraph: { title: 'About Codvoro', description: 'A development partner for your website, product, and the work that comes next.', url: '/about', type: 'website' },
 }
 
 const values = [
-  {
-    icon: Zap,
-    title: 'Speed without compromise',
-    desc: 'We move fast because our process is proven — not because we skip steps. Quality is non-negotiable.',
-  },
-  {
-    icon: Target,
-    title: 'Outcome-focused',
-    desc: 'We care about business results, not just lines of code. Every decision maps back to your goals.',
-  },
-  {
-    icon: Users,
-    title: 'True partnership',
-    desc: "We embed in your team, communicate proactively, and treat your product like it's our own.",
-  },
-  {
-    icon: Heart,
-    title: 'Craft & craftsmanship',
-    desc: 'We take pride in clean architecture, readable code, and interfaces that users love.',
-  },
-]
-
-const differentiators = [
-  'Senior-only team — no juniors learning on your project',
-  'Freelancer pricing, agency-level execution and accountability',
-  'Weekly demos and transparent project tracking',
-  'Direct communication — no account managers or middlemen',
-  'We care about your product, not just the invoice',
-  'US-timezone availability and fluent English communication',
-]
-
-const timeline = [
-  { year: '2018', event: 'Combined 10+ years of experience building software for top tech companies.' },
-  { year: '2020', event: 'Started taking on freelance clients — first $500k in client project value.' },
-  { year: '2022', event: 'Formalised as Codvoro. First agency-level project delivery for US startup.' },
-  { year: '2024', event: '50+ projects delivered. Expanded team with vetted senior specialists.' },
-  { year: '2026', event: 'Focused exclusively on US startups and growth-stage companies.' },
+  { icon: Compass, title: 'Purpose before features', text: 'We start with the problem your business needs to solve. That understanding guides the scope, experience, and technical approach.' },
+  { icon: MessageSquare, title: 'Clear communication', text: 'We explain decisions, share progress, and raise questions early. You should understand what is being built and why.' },
+  { icon: Code2, title: 'Care in the details', text: 'Thoughtful interfaces, readable code, and useful documentation make a difference to the people who use and maintain a product.' },
+  { icon: HeartHandshake, title: 'Shared responsibility', text: 'We agree on expectations together and stay involved through review, launch, and the transition to ongoing operation.' },
 ]
 
 export default function AboutPage() {
-  return (
-    <>
-      {/* Hero */}
-      <VideoHero src="/team.mp4">
-        <span className="section-tag section-tag-light">About Codvoro</span>
-        <h1 className="text-[2.5rem] lg:text-6xl font-extrabold text-white leading-[1.05] tracking-[-0.033em] mb-6">
-          Small team. <span className="gradient-text-light">Big delivery.</span>
-        </h1>
-        <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
-          Codvoro is a high-expertise software development team building web applications, SaaS platforms, and startup MVPs for US businesses. We combine the cost-efficiency of freelancers with the accountability and quality of a top-tier agency.
-        </p>
-      </VideoHero>
-
-      {/* Mission & Vision */}
-      <section className="section-pad-sm bg-slate-50 border-b border-slate-200 anim-reveal">
-        <div className="container-wide grid md:grid-cols-2 gap-10 lg:gap-20">
-          <div className="anim-pop anim-delay-1">
-            <span className="section-tag">Our Mission</span>
-            <p className="lede text-slate-700">
-              To help US startups and businesses build exceptional software — faster than they thought possible and at a price that makes sense. We believe great software should not require a $500k engineering hire or a bloated agency retainer.
-            </p>
-          </div>
-          <div className="anim-pop anim-delay-2 md:border-l md:border-slate-200 md:pl-10 lg:pl-20">
-            <span className="section-tag">Our Vision</span>
-            <p className="lede text-slate-700">
-              To become the go-to development partner for US startups at the product-building stage — known for shipping fast, communicating clearly, and delivering results that move businesses forward.
-            </p>
-          </div>
+  return <>
+    <VideoHero src="/team.mp4">
+      <span className="hero-eyebrow">About Codvoro</span>
+      <h1 className="hero-title">A development partner.<br /><span className="text-brand-200">Invested in the details.</span></h1>
+      <p className="hero-description">We are a web and software development company bringing together product thinking, considered design, and dependable engineering.</p>
+    </VideoHero>
+    <section className="section-pad bg-white">
+      <div className="container-mid text-center">
+        <span className="section-tag">Our purpose</span>
+        <h2 className="section-title">Make technology work for the people behind the business.</h2>
+        <p className="lede mt-7">A website should explain your company clearly. An application should make a task easier. A platform should give your team room to grow.</p>
+        <p className="mt-6 text-slate-600 leading-relaxed">That is the thinking behind our work. We help businesses turn ideas and operational challenges into digital experiences that are useful, coherent, and built to be maintained. Our role connects the first conversation with the design, development, and care a product needs after launch.</p>
+      </div>
+    </section>
+    <section className="section-pad bg-slate-50">
+      <div className="container-wide">
+        <SectionHeading eyebrow="What guides us" title="Practical principles. Consistent work.">The way we collaborate matters as much as the software we deliver.</SectionHeading>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {values.map(({ icon: Icon, title, text }) => <article key={title} className="service-card"><span className="icon-tile mb-6"><Icon className="h-6 w-6" strokeWidth={1.5} /></span><h3 className="text-xl font-semibold mb-3">{title}</h3><p className="text-slate-600 leading-relaxed">{text}</p></article>)}
         </div>
-      </section>
-
-      {/* Why Codvoro */}
-      <section className="section-pad bg-slate-50 border-y border-slate-200 anim-reveal">
-        <div className="container-wide grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          <div>
-            <span className="section-tag">Why Codvoro</span>
-            <h2 className="section-title">
-              The right mix of <span className="gradient-text">price &amp; quality</span>
-            </h2>
-            <p className="lede mt-6 mb-8 max-w-xl">
-              Most founders face a hard choice: hire an expensive agency and get bloated overhead, or hire individual freelancers and manage chaos. Codvoro is the third option.
-            </p>
-            <ul className="border-t border-slate-300 max-w-xl">
-              {differentiators.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700 py-3.5 border-b border-slate-300">
-                  <CheckCircle className="w-5 h-5 text-accent-600 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 rule-grid bg-white">
-            {values.map((v) => {
-              const Icon = v.icon
-              return (
-                <div key={v.title} className="rule-cell anim-pop">
-                  <Icon className="w-7 h-7 text-brand-600 mb-5" strokeWidth={1.5} />
-                  <h3 className="font-bold text-slate-900 text-lg tracking-tight mb-2">{v.title}</h3>
-                  <p className="text-slate-600 text-[0.9375rem] leading-relaxed">{v.desc}</p>
-                </div>
-              )
-            })}
-          </div>
+      </div>
+    </section>
+    <section className="section-pad bg-white">
+      <div className="container-wide">
+        <SectionHeading eyebrow="Working with Codvoro" title="One connected team, from brief to build.">We bring the right disciplines into the same conversation so that business goals, design decisions, and technical requirements stay aligned.</SectionHeading>
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {[
+            ['Plan with context', 'A shared brief, a considered scope, and clear milestones before implementation.'],
+            ['Stay close to the work', 'Direct conversations, regular demonstrations, and a place for feedback throughout.'],
+            ['Prepare for what comes next', 'Documentation, handover, and a support plan that fits your team and product.'],
+          ].map(([title, text]) => <div key={title} className="text-center"><Check className="h-6 w-6 text-brand-600 mb-5 mx-auto" /><h3 className="text-lg font-semibold mb-3">{title}</h3><p className="text-sm leading-relaxed text-slate-600">{text}</p></div>)}
         </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="section-pad bg-white anim-reveal">
-        <div className="container-wide grid lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-10 lg:gap-20">
-          <div>
-            <span className="section-tag">Our Journey</span>
-            <h2 className="section-title">
-              How we got <span className="gradient-text">here</span>
-            </h2>
-          </div>
-          <ol className="border-t border-slate-200">
-            {timeline.map((item) => (
-              <li key={item.year} className="grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-8 py-6 border-b border-slate-200">
-                <span className="text-brand-600 font-bold tabular-nums text-lg">{item.year}</span>
-                <p className="text-slate-700 leading-relaxed">{item.event}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-slate-950 anim-reveal">
-        <div className="container-wide section-pad-sm grid lg:grid-cols-[1.15fr_auto] gap-8 lg:gap-20 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Let&apos;s build something great together.
-            </h2>
-            <p className="mt-4 text-slate-400 text-lg max-w-2xl">
-              We only take on projects we believe in. Tell us yours — we&apos;ll tell you honestly if we&apos;re the right fit.
-            </p>
-          </div>
-          <Link href="/contact" className="btn-primary text-base shrink-0">
-            Start a Conversation <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-    </>
-  )
+        <div className="text-center mt-12"><Link href="/process" className="btn-secondary">Explore our process <ArrowRight className="h-4 w-4" /></Link></div>
+      </div>
+    </section>
+  </>
 }

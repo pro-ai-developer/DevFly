@@ -1,4 +1,4 @@
-import { partnerBrands } from './BrandLogos'
+import { techBrands } from './BrandLogos'
 
 /**
  * Continuously scrolling strip of the platforms we work across — logos only,
@@ -12,21 +12,20 @@ import { partnerBrands } from './BrandLogos'
  */
 export default function PartnerMarquee() {
   return (
-    <section className="border-b border-slate-200 bg-slate-50 py-10 lg:py-12 anim-reveal">
-      <div className="container-wide mb-7 flex items-center justify-between gap-6">
-        <p className="text-[0.6875rem] font-bold uppercase tracking-[0.16em] text-slate-500">
-          Technologies we build with
+    <section aria-labelledby="technology-heading" className="w-full border-b border-slate-200 bg-white py-9 lg:py-11">
+      <div className="px-5 mb-7 text-center">
+        <p id="technology-heading" className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-slate-500">
+          Built with established technologies
         </p>
-        <p className="hidden sm:block text-xs font-semibold text-slate-400">20+ production tools</p>
       </div>
       <div className="marquee">
         <div className="marquee-track">
           {[0, 1].map((copy) => (
             <ul key={copy} className="marquee-group" aria-hidden={copy === 1 || undefined}>
-              {partnerBrands.map((brand) => (
-                <li key={brand.name} className="flex items-center gap-3">
+              {techBrands.map((brand) => (
+                <li key={brand.name} className="flex shrink-0 items-center gap-3">
                   <span className="shrink-0 flex items-center justify-center w-9">{brand.logo}</span>
-                  <span className="text-xl font-bold tracking-tight text-slate-800 whitespace-nowrap">
+                  <span className="text-base font-medium text-slate-700 whitespace-nowrap">
                     {brand.name}
                   </span>
                 </li>

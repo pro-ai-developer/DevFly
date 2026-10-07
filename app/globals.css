@@ -448,14 +448,17 @@ h1, h2, h3, h4, h5, h6 {
 .marquee {
   position: relative;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8rem, #000 calc(100% - 8rem), transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8rem, #000 calc(100% - 8rem), transparent);
+  width: 100%;
+  --marquee-fade: clamp(1.5rem, 5vw, 5rem);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
   animation: marqueeScroll 48s linear infinite;
+  will-change: transform;
 }
 
 .marquee:hover .marquee-track { animation-play-state: paused; }
@@ -464,6 +467,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex: none;
   align-items: center;
+  justify-content: space-around;
+  min-width: 100vw;
   gap: clamp(2.5rem, 4vw, 4.5rem);
   padding-right: clamp(2.5rem, 4vw, 4.5rem);
   margin: 0;

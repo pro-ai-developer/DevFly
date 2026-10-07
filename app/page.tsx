@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ArrowRight, ArrowUpRight, Check, Compass, Layers, Code2, Rocket } from 'lucide-react'
 import VideoHero from '@/components/VideoHero'
 import SectionHeading from '@/components/SectionHeading'
-import { techBrands } from '@/components/BrandLogos'
+import PartnerMarquee from '@/components/PartnerMarquee'
 import { services } from '@/lib/services'
 import { siteUrl } from '@/lib/site'
 import { projects } from './portfolio/projects'
@@ -47,14 +47,7 @@ export default function HomePage() {
       </div>
     </VideoHero>
 
-    <section className="section-pad-sm border-b border-slate-200 bg-white">
-      <div className="container-wide text-center">
-        <p className="text-xs font-semibold uppercase tracking-[.16em] text-slate-500 mb-7">Built with established technologies</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
-          {techBrands.slice(0, 6).map(brand => <div key={brand.name} className="flex items-center gap-3 text-sm font-semibold text-slate-600"><span aria-hidden="true">{brand.logo}</span>{brand.name}</div>)}
-        </div>
-      </div>
-    </section>
+    <PartnerMarquee />
 
     <section className="section-pad bg-slate-50">
       <div className="container-wide">
